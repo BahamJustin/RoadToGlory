@@ -1,17 +1,25 @@
 import random
 
-homeTeam = 'New Orleans Saints'
-awayTeam = 'Atlanta Falcons'
+class homeTeam:
+    city = "New Orleans"
+    name = "Saints"
+    wins = 0
+    losses = 0
+    ties = 0
 
-homeWins = 0
-homeLosses = 0
-homeTies = 0
-awayWins = 0
-awayLosses = 0
-awayTies = 0  
+class awayTeam:
+    city = "Atlanta"
+    name = "Falcons"
+    wins = 0
+    losses = 0
+    ties = 0
 
-homeRecord = f"{homeWins}/{homeLosses}/{homeTies}"
-awayRecord = f"{awayWins}/{awayLosses}/{awayTies}"
+def changeRecord(winners):
+    print(winners.city + " wins!")
+
+    record = f"{winners.wins}/{winners.losses}/{winners.ties}"
+
+    print(record)
 
 def simulateGame():
     homeScore = 7 * random.randint(0,5)
@@ -19,23 +27,16 @@ def simulateGame():
     awayScore = 7 * random.randint(0,5)
     awayScoreStr = str(awayScore)
 
-    print(homeTeam + ":" + homeScoreStr +
-    """
-    """ +
-    awayTeam + ":" + awayScoreStr)
+    print(
+    homeTeam.name + ":" + homeScoreStr +
+    """ """ +
+    awayTeam.name + ":" + awayScoreStr)
 
     if homeScore == awayScore:
         print("It's a Tie!")
-        print(homeTeam, homeRecord)
-        print(awayTeam, awayRecord)
     elif homeScore > awayScore:
-        print(homeTeam + " win!")
-        print(homeTeam, homeRecord)
-        print(awayTeam, awayRecord)
+        changeRecord(homeTeam)
     else:
-        print(awayTeam + " win!")
-        print(homeTeam, homeRecord)
-        print(awayTeam, awayRecord)
+        changeRecord(awayTeam)      
 
 simulateGame()
-
