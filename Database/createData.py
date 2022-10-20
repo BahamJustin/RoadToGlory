@@ -8,10 +8,13 @@ teams = (
 )
 
 def newLeague():
+    db.connect()
     db.create_tables([Team])
     
     for team in teams:
         Team.create(city=team[0], name=team[1], players=team[2])
+    
+    db.close()
 
 # saints = Team.create(city = "New Orleans", name = "Saints")
 

@@ -1,6 +1,6 @@
 from Database.schema import db, Team
 
-db.connect()
+# db.connect()
 
 template = "{team.city} {team.name} Roster Size = {team.players}"
 

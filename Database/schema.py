@@ -16,3 +16,4 @@ class Team(BaseTable):
     name = CharField(null=False, index=True)
     players = IntegerField(null=True)
 
+# Task: Create players that belong to each team
