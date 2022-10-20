@@ -12,6 +12,7 @@ class BaseTable(Model):
 
 # create team model
 class Team(BaseTable):
-    city = CharField()
-    name = CharField()
+    city = CharField(null=False, index=True)
+    name = CharField(null=False, index=True)
+    players = IntegerField(null=True)
 
