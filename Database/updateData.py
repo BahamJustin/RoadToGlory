@@ -9,7 +9,6 @@ cardinals = Team(city="Arizona", name="Cardinals", players=45)
 ravens = Team(
     city="Baltimore",
     name="Ravens",
-    players=52
 )
 
 Team.update(players=35).where(Team.name == "Saints").execute()

@@ -42,22 +42,21 @@ def menu():
     print("************  RoadToGlory  **************")
 
     choice = input("""
-                      A: Simulate Game
-                      B: View League
-                      C: New Game?
+                      1: Simulate Game
+                      2: View League
+                      3: New Game?
                       Q: Exit Game
 
                       Please enter your choice: """)
 
-    if choice == "a" or choice =="A":
+    if choice == "1":
         simulateGame()
         print()
         menu()
-    elif choice == "b" or choice =="B":
+    elif choice == "2":
         viewLeague()
         print()
-        menu()
-    elif choice == "c" or choice == "C":
+    elif choice == "3":
         newGame()
         menu()
     elif choice == "q" or choice == "Q":
@@ -97,12 +96,64 @@ def simulateGame():
         if homeScore == awayScore:
             print("It's a Tie!")
         elif homeScore > awayScore:
-            changeRecord(homeTeam.name)
+            changeRecord(homeTeam.city)
         else:
-            changeRecord(awayTeam.name)
+            changeRecord(awayTeam.city)
     db.close()
 
-      
+def viewLeague():
+    choice = input("""
+                    1: View All Teams
+                    2: View By Conference
+                    3: View By Division
+                    4: Back to Menu """)      
+    if choice == "1":
+        viewAllTeams()
+        menu()
+    elif choice == "2":
+        chooseConference = input("""
+                                    1. NFC
+                                    2. AFC
+                                    """)
+        if chooseConference == "1":
+            teamByConf("NFC")
+            viewLeague()
+        elif chooseConference == "2":
+            teamByConf("AFC")
+            viewLeague()
+    elif choice == "3":
+        chooseDivision = input("""
+                        1. AFC North        5. NFC North
+                        2. AFC East         6. NFC East
+                        3. AFC West         7. NFC West
+                        4. AFC South        8.NFC South
+                        """)
+        if chooseDivision == "1":
+            teamByDiv("AFC North")
+            viewLeague()
+        elif chooseDivision == "2":
+            teamByDiv("AFC East")
+            viewLeague()
+        elif chooseDivision == "3":
+            teamByDiv("AFC West")
+            viewLeague()
+        elif chooseDivision == "4":
+            teamByDiv("AFC South")
+            viewLeague()
+        elif chooseDivision == "5":
+            teamByDiv("NFC North")
+            viewLeague()
+        elif chooseDivision == "6":
+            teamByDiv("NFC East")
+            viewLeague()
+        elif chooseDivision == "7":
+            teamByDiv("NFC West")
+            viewLeague()
+        elif chooseDivision == "8":
+            teamByDiv("NFC South")
+            viewLeague()
+    else:
+        menu()
 
     
     
