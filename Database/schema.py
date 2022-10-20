@@ -1,4 +1,3 @@
-from codecs import charmap_build
 from peewee import *
 
 db = SqliteDatabase("league.db")

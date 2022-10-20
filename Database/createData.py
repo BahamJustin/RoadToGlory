@@ -1,4 +1,4 @@
-from Database.schema import Conference, Division, db, Team
+from Database.schema import *
 
 teams = (
     ("Buffalo", "Bills", "AFC", "AFC East"),

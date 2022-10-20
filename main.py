@@ -101,6 +101,7 @@ def simulateGame():
             changeRecord(awayTeam.city)
     db.close()
 
+#
 def viewLeague():
     choice = input("""
                     1: View All Teams
@@ -155,7 +156,5 @@ def viewLeague():
     else:
         menu()
 
-    
-    
 ##########
 main()

@@ -1,4 +1,4 @@
-from Database.schema import db, Team
+from Database.schema import *
 
 # db.connect()
 
