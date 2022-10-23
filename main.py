@@ -43,8 +43,9 @@ def menu():
 
     choice = input("""
                       1: Simulate Game
-                      2: View League
-                      3: New Game?
+                      2: Next Week
+                      3: View League
+                      4: New Game?
                       Q: Exit Game
 
                       Please enter your choice: """)
@@ -54,9 +55,11 @@ def menu():
         print()
         menu()
     elif choice == "2":
-        viewLeague()
         print()
     elif choice == "3":
+        viewLeague()
+        print()
+    elif choice == "4":
         newGame()
         menu()
     elif choice == "q" or choice == "Q":

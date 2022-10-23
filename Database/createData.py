@@ -51,11 +51,10 @@ divisions = (
     ("AFC West")
 )
 
+
 def newLeague():
     db.connect()
-    db.create_tables([Conference])
-    db.create_tables([Division])
-    db.create_tables([Team])
+    db.create_tables([Team,Conference, Division])
     
     for team in teams:
         Team.create(city=team[0], name=team[1], conf=team[2], div=team[3])

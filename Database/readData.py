@@ -14,6 +14,7 @@ def viewAllTeams():
 
     for team in Team.select():
         print(template.format(team=team))
+    db.close()
 
 # Get specific team
 
