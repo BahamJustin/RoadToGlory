@@ -1,4 +1,9 @@
+import os
 from Database.schema import *
+from datetime import *
+from os import *
+
+currentYear = datetime.now().year
 
 teams = (
     ("Buffalo", "Bills", "AFC", "AFC East"),
@@ -22,7 +27,7 @@ teams = (
     ("Dallas", "Cowboys", "NFC", "NFC East"),
     ("Washington", "Commanders", "NFC", "NFC East"),
     ("Minnesota", "Vikings", "NFC", "NFC North"),
-    ("Green Bay", "Pakcers", "NFC", "NFC North"),
+    ("Green Bay", "Packers", "NFC", "NFC North"),
     ("Chicago", "Bears", "NFC", "NFC North"),
     ("Detroit", "Lions", "NFC", "NFC North"),
     ("Tampa Bay", "Buccaneers","NFC", "NFC South"),
@@ -51,15 +56,18 @@ divisions = (
     ("AFC West")
 )
 
-
 def newLeague():
     db.connect()
-    db.create_tables([Team,Conference, Division])
+    db.create_tables([Season, Team, Conference, Division])
+
+    Season.create(year=currentYear)
     
     for team in teams:
         Team.create(city=team[0], name=team[1], conf=team[2], div=team[3])
     
     db.close()
+
+
 
 # saints = Team.create(city = "New Orleans", name = "Saints")
 

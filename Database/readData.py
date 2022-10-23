@@ -17,6 +17,13 @@ def viewAllTeams():
     db.close()
 
 # Get specific team
+def teamByID(ID):
+    db.connect()
+    print(ID)
+    print("_" * 35)
+
+    print(Team.get_by_id(ID).name)
+    db.close()
 
 def teamByConf(Confs):
     db.connect()
@@ -34,4 +41,10 @@ def teamByDiv(Divs):
 
     for team in Team.select().where(Team.div == Divs):
         print(template.format(team=team))
+    db.close()
+
+def getCurrentSeason():
+    currentSeason = str(Season.select().order_by(Season.id.desc()).get().year)
+
+    print("-------------- " + currentSeason + "-----------------")
     db.close()

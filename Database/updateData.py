@@ -2,18 +2,58 @@ from Database.schema import *
 
 # db.connect()
 
-template = "{team.city} {team.name} Roster Size = {team.players}"
+template = "{team.city} {team.name}"
 
-cardinals = Team(city="Arizona", name="Cardinals", players=45)
+def nextSeason():
+    db.connect()
 
-ravens = Team(
-    city="Baltimore",
-    name="Ravens",
-)
+    oldYear = Season.select().order_by(Season.id.desc()).get().year
+    newYear = oldYear + 1
 
-Team.update(players=35).where(Team.name == "Saints").execute()
+    print("Moving to next season...")
+
+    choice = input("""
+                        Confirm (Y)es or (N)o
+                        
+                        """)
+    
+    if choice == "Y" or choice == "y":
+        Season.create(year=newYear)
+    elif choice == "N" or choice == 'n':
+        return
+
+    db.close()
+
+def simSeason():
+    db.connect()
+
+    oldYear = Season.select().order_by(Season.id.desc()).get().year
+    newYear = oldYear + 1
+
+    print("Are you sure you want to sim this season?")
+
+    choice = input("""
+                        Yes
+                        No
+                        Y or N?:""")
+    
+    if choice == "Y" or choice == "y":
+        Season.create(year=newYear)
+    elif choice == "N" or choice == 'n':
+        return
+
+    db.close()
+
+# cardinals = Team(city="Arizona", name="Cardinals", players=45)
+
+# ravens = Team(
+#     city="Baltimore",
+#     name="Ravens",
+# )
+
+# Team.update(players=35).where(Team.name == "Saints").execute()
 
 # ravens.players = 50
 # ravens.save()
 
-ravens.delete_instance()
+# ravens.delete_instance()

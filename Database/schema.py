@@ -1,5 +1,3 @@
-from lib2to3.pytree import Base
-from operator import truediv
 from peewee import *
 
 db = SqliteDatabase("league.db")
@@ -16,8 +14,8 @@ class BaseTable(Model):
 #     weekID = IntegerField(null=False, index=True)
 #     season = ForeignKeyField(Season, backref='weeks')
 
-# class Season(BaseTable):
-#     year = IntegerField(null=False, index=True)
+class Season(BaseTable):
+    year = IntegerField(null=False, index=True)
 
 # Create Divisions/Conferences
 class Conference(BaseTable):
@@ -33,7 +31,7 @@ class Team(BaseTable):
     conf = ForeignKeyField(Conference, backref='teams')
     div = ForeignKeyField(Division, backref='teams')
 
-    # teamID =
+    # teamID 
 
 #     # players = IntegerField(null=True)
 

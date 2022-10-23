@@ -1,7 +1,10 @@
 from Database.schema import *
 from Database.createData import *
 from Database.readData import *
+from Database.updateData import *
+from test import *
 from peewee import *
+from pathlib import Path
 import csv
 import sys
 import os
@@ -17,35 +20,50 @@ def changeRecord(winners):
 
 ############
 def main():
-    db.close()
-    menu()    
+    leagueDB = Path("league.db")
+    if leagueDB.exists():
+        db.close()
+        menu()    
+    else:
+        newLeague()
 
 # 
 def newGame():
     print("Are You Sure?")
 
     choice = input("""
-                        Yes
-                        No
+                        Confirm (Y)es or (N)o
                         
-                        Y or N?:""")
+                        """)
     
     if choice == "Y" or choice == "y":
         os.remove('league.db')
-        newLeague()
     elif choice == "N" or choice == 'n':
         return
+
+count = 1
+
+def click():
+    global count
+
+    count = count + 1
+    
+    if count > 18:
+        count = 1
+        nextSeason()
 
 # Menu Function
 def menu():
 
     print("************  RoadToGlory  **************")
+    getCurrentSeason()
 
     choice = input("""
                       1: Simulate Game
-                      2: Next Week
-                      3: View League
-                      4: New Game?
+                      2: Sim Week
+                      3: Sim Season
+                      4: View League
+                      5: New Game?
                       Q: Exit Game
 
                       Please enter your choice: """)
@@ -55,12 +73,19 @@ def menu():
         print()
         menu()
     elif choice == "2":
-        print()
+        click()
+        print("Week: " + str(count))
+        menu()
     elif choice == "3":
+        nextSeason()
+        print()
+        menu()
+    elif choice == "4":
         viewLeague()
         print()
-    elif choice == "4":
+    elif choice == "5":
         newGame()
+        newLeague()
         menu()
     elif choice == "q" or choice == "Q":
         db.close()
