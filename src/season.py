@@ -10,7 +10,7 @@ import random
 # Create an 18 week Season
 
 
-
+#  /////////////////////////////////////////////////////////////////////////////////
 
 # def createWeek():
 #     class homeTeam:
@@ -33,6 +33,7 @@ import random
 #     print(random.shuffle(teams))
 
 # createSeason()
+# ////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 # nfcNorth = list(Team.select().where(Team.div == "NFC North"))
 # nfcSouth = list(Team.select().where(Team.div == "NFC South"))
@@ -68,6 +69,8 @@ import random
 
 # print(4 % 3)
 # print(len(nfcNorth))
+
+# ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 # def main():
 #     nfcConf = nfcEast+nfcNorth+nfcSouth+nfcWest
@@ -127,3 +130,68 @@ import random
     # print
 
 # main()
+
+# ////////////////////////////////////////////////////////////////////////////////////////////
+
+# def GenerateFixtures(self):
+#     #  ????
+#     ghostteam = 0
+
+#     # 
+#     teams = self.teams
+
+#     # checking if theres 2 teams?
+#     if self.teams % 2 == 1:
+#         ghostteam = 1
+#         teams = teams + 1
+    
+#     # games in a season?
+#     totalRounds = teams - 1
+
+#     # games per week
+#     matches = int((teams) / 2)
+#     self.finishweek = (totalRounds * self.rounds) + self.startweek
+
+#     # ?????
+#     if self.finishweek == 0:
+#         self.finishweek = -1
+
+#     # 
+#     iterations = self.rounds
+
+#     # 
+#     home = 0
+#     away = 0
+#     swop = 0
+#     counter = 0
+#     LeagueTeamList = []
+
+#     # 
+#     if ghostteam == 1:
+#         LeagueTeamList.append(-1)
+
+#     # 
+#     for t in TeamList:
+#         if t.league == self:
+#             LeagueTeamList.append(t.id)
+
+#     # for each week in the season...
+#     for r in range(0,totalRounds):
+#         # foir each game in a week...
+#         for m in range (0, matches):
+#             # 
+#             home = (r + m) % (teams - 1)
+#             away = (teams - 1 - m + r) % (teams - 1)
+
+#             if m == 0:
+#                 away = (teams - 1)
+#             if r % 2 == 1:
+#                 swop = home
+#                 home = away
+#                 away = swop
+
+#             for i in range(0, iterations):
+#                 if i % 2 == 0:
+#                     f = Fixture([(totalRounds*i)+r+self.startweek,LeagueTeamList[home-1],LeagueTeamList[away-1],1,self])
+#                 else:
+#                     f = Fixture([(totalRounds*i)+r+self.startweek,LeagueTeamList[away-1],LeagueTeamList[home-1],1,self])

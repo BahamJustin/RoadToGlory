@@ -2,7 +2,7 @@ from Database.schema import *
 from Database.createData import *
 from Database.readData import *
 from Database.updateData import *
-from test import *
+# from test import *
 from peewee import *
 from pathlib import Path
 import csv
@@ -18,6 +18,27 @@ def changeRecord(winners):
 
     # print(record)
 
+# Create the player
+# class Player:
+#     def __init__(self, name, team
+#     # Position
+#     ):
+#         self.name = name
+#         self.team = team
+    
+#     def __str__(self):
+#         return f"{self.name} of the {self.team}"
+
+#     def changeTeam(self, newTeam):
+#         self.team = newTeam
+
+# New PLayer Init
+def newPlayer():
+    Player.name = input("Enter Name: ")
+
+def displayName():
+    print(Player.name)
+
 ############
 def main():
     leagueDB = Path("league.db")
@@ -25,6 +46,7 @@ def main():
         db.close()
         menu()    
     else:
+        # newPlayer()
         newLeague()
 
 # 
@@ -41,50 +63,51 @@ def newGame():
     elif choice == "N" or choice == 'n':
         return
 
-count = 1
+# Reset count on Sim Season
+# Advance count when games are simmed -  but sim multiple games first?
+weekCount = 1
 
-def click():
-    global count
-
-    count = count + 1
+def simWeek():
+    global weekCount
     
-    if count > 18:
-        count = 1
+    if weekCount < 18:
+        simulateGame()
+        weekCount = weekCount + 1
+    else:
+        weekCount = 1
         nextSeason()
+
 
 # Menu Function
 def menu():
 
+    
     print("************  RoadToGlory  **************")
     getCurrentSeason()
 
     choice = input("""
-                      1: Simulate Game
-                      2: Sim Week
-                      3: Sim Season
-                      4: View League
-                      5: New Game?
+                      1: Sim Week
+                      2: Sim Season
+                      3: View League
+                      4: New Game?
                       Q: Exit Game
 
                       Please enter your choice: """)
 
     if choice == "1":
-        simulateGame()
-        print()
+        simWeek()
+        print("Week: " + str(weekCount))
         menu()
     elif choice == "2":
-        click()
-        print("Week: " + str(count))
-        menu()
-    elif choice == "3":
         nextSeason()
         print()
         menu()
-    elif choice == "4":
+    elif choice == "3":
         viewLeague()
         print()
-    elif choice == "5":
+    elif choice == "4":
         newGame()
+        newPlayer()
         newLeague()
         menu()
     elif choice == "q" or choice == "Q":

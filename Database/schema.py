@@ -1,3 +1,6 @@
+from ast import For
+from lib2to3.pytree import Base
+from operator import index, truediv
 from peewee import *
 
 db = SqliteDatabase("league.db")
@@ -14,6 +17,9 @@ class BaseTable(Model):
 #     weekID = IntegerField(null=False, index=True)
 #     season = ForeignKeyField(Season, backref='weeks')
 
+
+
+#  Create Season
 class Season(BaseTable):
     year = IntegerField(null=False, index=True)
 
@@ -32,6 +38,23 @@ class Team(BaseTable):
     div = ForeignKeyField(Division, backref='teams')
 
     # teamID 
+
+# Create actor base model
+class Actor(Model):
+    firstName = CharField(null=False, index=True)
+    lastName = CharField(null=False, index=True)
+    # age
+    #  team = ForeignKeyField(Team, backref='')
+    class Meta:
+        database = db
+
+# Create Players
+class Player(Actor):
+    teamName = ForeignKeyField(Team.name, backref='players')
+
+# Create User 
+class User(Actor):
+    team = ForeignKeyField(Team, backref='user')
 
 #     # players = IntegerField(null=True)
 
