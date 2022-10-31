@@ -14,9 +14,9 @@ import names
 teams = ["saints", "texans", "vikings"]
 players = ["John Smith", "Jim Baker", "Dusty Boot"]
 
-for x in teams:
-  for y in range(5):
-    print(x, players[1])
+# for x in teams:
+#   for y in range(5):
+#     print(x, players[1])
 
 # NameA = names.get_first_name()
 # # NameB = names.get_last_name()
@@ -27,10 +27,8 @@ for x in teams:
 # randomFirstName = random.choice(firstNames)
 # randomLastName = random.choice(lastNames)
 
-
-
-# for x in range(5) :
-#     print(names.get_first_name())
+for x in range(5) :
+    print(names.get_first_name())
 
 # nfcNorth = list(Team.select().where(Team.div == "NFC North"))
 # nfcSouth = list(Team.select().where(Team.div == "NFC South"))

@@ -1,5 +1,5 @@
-# from Database.schema import *
-from schema import *
+from Database.schema import *
+# from schema import *
 import os
 
 # db.connect()
@@ -49,7 +49,7 @@ def simSeason():
 def resetLeague():
     os.remove('league.db')
 
-resetLeague()
+# resetLeague()
 
 # cardinals = Team(city="Arizona", name="Cardinals", players=45)
 

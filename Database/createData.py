@@ -1,12 +1,12 @@
 import os
-# from Database.schema import *
-from schema import *
+from Database.schema import *
+# from schema import *
 from datetime import *
 from os import *
 from random import *
 import names
 
-db.connect()
+# db.connect()
 
 currentYear = datetime.now().year
 
@@ -61,10 +61,8 @@ divisions = (
     ("AFC West")
 )
 
-players = (("John", "Smith"), ("Jim", "Baker"), ("Dusty", "Boot"))
-
 def newLeague():
-    # db.connect()
+    db.connect()
     db.create_tables([Season, Team, Conference, Division, Actor, Player, User])
 
     Season.create(year=currentYear)
@@ -73,25 +71,22 @@ def newLeague():
     for team in teams:
         Team.create(city=team[0], name=team[1], conf=team[2], div=team[3])
         # ...for range(5), create player with randon names
+        for player in range(5):
+            # Need to restrict names to male names for players
+            Player.create(firstName=names.get_first_name(), lastName=names.get_last_name(), teamName=team[1])
 
-    Actor.create(firstName="Justin", lastName="Baham")
+    # Actor.create(firstName="Justin", lastName="Baham")
 
-    Player.create(firstName="John", lastName="Madden", teamName="Saints")
+    # Player.create(firstName="John", lastName="Madden", teamName="Saints")
 
     # for player in players:
     #         Player.create(firstName=player[0], lastName=player[1], teamName="Saints")
 
-        
+    db.close()
     
-    # db.close()
+# newLeague()
 
-    
-newLeague()
-
-# print(players[1])
-
-db.close()
-
+# db.close()
 
 # saints = Team.create(city = "New Orleans", name = "Saints")
 

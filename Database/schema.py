@@ -17,8 +17,6 @@ class BaseTable(Model):
 #     weekID = IntegerField(null=False, index=True)
 #     season = ForeignKeyField(Season, backref='weeks')
 
-
-
 #  Create Season
 class Season(BaseTable):
     year = IntegerField(null=False, index=True)

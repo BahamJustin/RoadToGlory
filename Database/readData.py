@@ -1,13 +1,13 @@
-# from Database.schema import *
-from schema import *
+from Database.schema import *
+# from schema import *
 from peewee import fn
 import sys
 
-db.connect()
+# db.connect()
 
 teamTemplate = "{team.city} {team.name}"
 actorTemplate = "{actor.firstName} {actor.lastName}"
-playerTemplate = "{player.firstName} {player.lastName}"
+playerTemplate = "{player.firstName} {player.lastName} {player.teamName_id}"
 
 def viewAllTeams():
     # db.connect()
@@ -45,24 +45,11 @@ def teamByDiv(Divs):
         print(teamTemplate.format(team=team))
     # db.close()
 
-def viewAllActors():
-    print("All Actors")
-    print("-" * 35)
-
-    # print(Actor.get())
-
-    for actor in Actor.select():
-        # print(Actor.get())
-        print(actorTemplate.format(actor=actor))
-
-    print("$" * 35)
-
+def viewAllPlayers():
     print("All Players")
     print("-" * 35)
 
-    # CANT GET teamName TO SHOW
     for player in Player.select():
-        print(Player.get())
         print(playerTemplate.format(player=player))
 
 #  Print Player Data
@@ -72,8 +59,9 @@ def PlayersbyTeam(Team):
     print("-" * 35)
     
 
-    # for actor in Actor.select().where(Player.teamName == Team):
-    #     print(actorTemplate.format(actor=actor))
+    for player in Player.select().where(Player.teamName == Team):
+        print(playerTemplate.format(player=player))
+
     # db.close()
 
 def getCurrentSeason():
@@ -82,6 +70,6 @@ def getCurrentSeason():
     print("-------------- " + currentSeason + "-----------------")
     db.close()
 
-viewAllActors()
+# PlayersbyTeam("Saints")
 
-db.close()
+# db.close()
