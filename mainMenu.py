@@ -18,20 +18,6 @@ def changeRecord(winners):
 
     # print(record)
 
-# Create the player
-# class Player:
-#     def __init__(self, name, team
-#     # Position
-#     ):
-#         self.name = name
-#         self.team = team
-    
-#     def __str__(self):
-#         return f"{self.name} of the {self.team}"
-
-#     def changeTeam(self, newTeam):
-#         self.team = newTeam
-
 # New PLayer Init
 def newPlayer():
     Player.name = input("Enter Name: ")
@@ -39,7 +25,7 @@ def newPlayer():
 def displayName():
     print(Player.name)
 
-############
+#
 def main():
     leagueDB = Path("league.db")
     if leagueDB.exists():
@@ -64,7 +50,7 @@ def newGame():
         return
 
 # Reset count on Sim Season
-# Advance count when games are simmed -  but sim multiple games first?
+########### Advance count when games are simmed -  but sim multiple games first?
 weekCount = 1
 
 def simWeek():
@@ -119,7 +105,7 @@ def menu():
         menu()
 
 # simulated games and outcomes - randomly generated for now
-# Current Task: Use teams from Database to simulate games - randomly chosen teams then specific
+############ Current Task: Use teams from Database to simulate games - randomly chosen teams then specific
 def simulateGame():
     # create 2 teams to play against each other
     class homeTeam:
@@ -158,7 +144,8 @@ def viewLeague():
                     1: View All Teams
                     2: View By Conference
                     3: View By Division
-                    4: Back to Menu """)      
+                    4: Search Team
+                    5: Back to Menu """)      
     if choice == "1":
         viewAllTeams()
         menu()
@@ -178,7 +165,7 @@ def viewLeague():
                         1. AFC North        5. NFC North
                         2. AFC East         6. NFC East
                         3. AFC West         7. NFC West
-                        4. AFC South        8.NFC South
+                        4. AFC South        8. NFC South
                         """)
         if chooseDivision == "1":
             teamByDiv("AFC North")
@@ -204,6 +191,11 @@ def viewLeague():
         elif chooseDivision == "8":
             teamByDiv("NFC South")
             viewLeague()
+    elif choice == "4":
+        ############### have to use Caps
+        teamSearch = input("Search Team: ")
+        PlayersbyTeam(teamSearch)
+        viewLeague()
     else:
         menu()
 

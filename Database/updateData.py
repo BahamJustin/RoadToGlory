@@ -49,7 +49,6 @@ def simSeason():
 def resetLeague():
     os.remove('league.db')
 
-# resetLeague()
 
 # cardinals = Team(city="Arizona", name="Cardinals", players=45)
 

@@ -3,8 +3,6 @@ from Database.schema import *
 from peewee import fn
 import sys
 
-# db.connect()
-
 teamTemplate = "{team.city} {team.name}"
 actorTemplate = "{actor.firstName} {actor.lastName}"
 playerTemplate = "{player.firstName} {player.lastName} {player.teamName_id}"
@@ -14,11 +12,12 @@ def viewAllTeams():
     print("All Teams")
     print("-" * 35)
 
+    ############### Need to format list better
     for team in Team.select():
         print(teamTemplate.format(team=team))
     # db.close()
 
-# Get specific team
+# Get specific team by ID
 def teamByID(ID):
     # db.connect()
     print(ID)
@@ -26,6 +25,14 @@ def teamByID(ID):
 
     print(Team.get_by_id(ID).name)
     # db.close()
+
+# Specific team by name
+def teamByName(Name):
+    print(Name)
+    print("-" * 35)
+
+    for team in Team.select().where(Team.name == Name):
+        print(teamTemplate.format(team=team))
 
 def teamByConf(Confs):
     # db.connect()
@@ -53,13 +60,13 @@ def viewAllPlayers():
         print(playerTemplate.format(player=player))
 
 #  Print Player Data
-def PlayersbyTeam(Team):
+def PlayersbyTeam(teamName):
     # db.connect()
-    print(Team)
-    print("-" * 35)
-    
 
-    for player in Player.select().where(Player.teamName == Team):
+    for team in Team.select().where(Team.name == teamName):
+        print(teamTemplate.format(team=team))
+    print("-" * 25)
+    for player in Player.select().where(Player.teamName == teamName):
         print(playerTemplate.format(player=player))
 
     # db.close()
@@ -71,5 +78,3 @@ def getCurrentSeason():
     db.close()
 
 # PlayersbyTeam("Saints")
-
-# db.close()

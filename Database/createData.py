@@ -72,18 +72,11 @@ def newLeague():
         Team.create(city=team[0], name=team[1], conf=team[2], div=team[3])
         # ...for range(5), create player with randon names
         for player in range(5):
-            # Need to restrict names to male names for players
+            ############## Need to restrict names to male names for players
             Player.create(firstName=names.get_first_name(), lastName=names.get_last_name(), teamName=team[1])
 
-    # Actor.create(firstName="Justin", lastName="Baham")
-
-    # Player.create(firstName="John", lastName="Madden", teamName="Saints")
-
-    # for player in players:
-    #         Player.create(firstName=player[0], lastName=player[1], teamName="Saints")
-
     db.close()
-    
+
 # newLeague()
 
 # db.close()

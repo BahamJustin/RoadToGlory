@@ -13,10 +13,6 @@ class BaseTable(Model):
     class Meta:
         database = db
 
-# class Week(BaseTable):
-#     weekID = IntegerField(null=False, index=True)
-#     season = ForeignKeyField(Season, backref='weeks')
-
 #  Create Season
 class Season(BaseTable):
     year = IntegerField(null=False, index=True)
@@ -53,11 +49,3 @@ class Player(Actor):
 # Create User 
 class User(Actor):
     team = ForeignKeyField(Team, backref='user')
-
-#     # players = IntegerField(null=True)
-
-# class Game(BaseTable):
-#     teamA = ForeignKeyField(Team, backref='games')
-#     teamB = ForeignKeyField(Team, backref='games')
-
-# Task: Create players that belong to each team
