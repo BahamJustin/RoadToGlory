@@ -3,7 +3,7 @@ from Database.schema import *
 # from schema import *
 from datetime import *
 from os import *
-from random import *
+import random
 import names
 
 # db.connect()
@@ -71,9 +71,30 @@ def newLeague():
     for team in teams:
         Team.create(city=team[0], name=team[1], conf=team[2], div=team[3])
         # ...for range(5), create player with randon names
-        for player in range(5):
+        for player in range(2):
             ############## Need to restrict names to male names for players
-            Player.create(firstName=names.get_first_name(), lastName=names.get_last_name(), teamName=team[1])
+            # Create each position - QB
+            Player.create(firstName=names.get_first_name(), lastName=names.get_last_name(), teamName=team[1], position="FB", overall=random.randrange(50,99))
+            Player.create(firstName=names.get_first_name(), lastName=names.get_last_name(), teamName=team[1], position="C", overall=random.randrange(50,99))
+            Player.create(firstName=names.get_first_name(), lastName=names.get_last_name(), teamName=team[1], position="SS", overall=random.randrange(50,99))
+            Player.create(firstName=names.get_first_name(), lastName=names.get_last_name(), teamName=team[1], position="FS", overall=random.randrange(50,99))
+            Player.create(firstName=names.get_first_name(), lastName=names.get_last_name(), teamName=team[1], position="K", overall=random.randrange(50,99))
+            Player.create(firstName=names.get_first_name(), lastName=names.get_last_name(), teamName=team[1], position="P", overall=random.randrange(50,99))
+            Player.create(firstName=names.get_first_name(), lastName=names.get_last_name(), teamName=team[1], position="R", overall=random.randrange(50,99))
+        for player in range(3):
+            Player.create(firstName=names.get_first_name(), lastName=names.get_last_name(), teamName=team[1], position="QB", overall=random.randrange(50,99))
+            Player.create(firstName=names.get_first_name(), lastName=names.get_last_name(), teamName=team[1], position="HB", overall=random.randrange(50,99))
+            Player.create(firstName=names.get_first_name(), lastName=names.get_last_name(), teamName=team[1], position="TE", overall=random.randrange(50,99))
+            Player.create(firstName=names.get_first_name(), lastName=names.get_last_name(), teamName=team[1], position="MLB", overall=random.randrange(50,99))
+        for player in range(4):
+            Player.create(firstName=names.get_first_name(), lastName=names.get_last_name(), teamName=team[1], position="OT", overall=random.randrange(50,99))
+            Player.create(firstName=names.get_first_name(), lastName=names.get_last_name(), teamName=team[1], position="OG", overall=random.randrange(50,99))
+            Player.create(firstName=names.get_first_name(), lastName=names.get_last_name(), teamName=team[1], position="DE", overall=random.randrange(50,99))
+            Player.create(firstName=names.get_first_name(), lastName=names.get_last_name(), teamName=team[1], position="DT", overall=random.randrange(50,99))
+            Player.create(firstName=names.get_first_name(), lastName=names.get_last_name(), teamName=team[1], position="OLB", overall=random.randrange(50,99))
+            Player.create(firstName=names.get_first_name(), lastName=names.get_last_name(), teamName=team[1], position="CB", overall=random.randrange(50,99))
+        for player in range(5):
+            Player.create(firstName=names.get_first_name(), lastName=names.get_last_name(), teamName=team[1], position="WR", overall=random.randrange(50,99))
 
     db.close()
 

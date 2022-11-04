@@ -11,8 +11,11 @@ import os
 import random
 import names
 
-teams = ["saints", "texans", "vikings"]
-players = ["John Smith", "Jim Baker", "Dusty Boot"]
+# teams = ["saints", "texans", "vikings"]
+# players = ["John Smith", "Jim Baker", "Dusty Boot"]
+
+def randomOverall():
+    print(random.randrange(50, 99))
 
 # for x in teams:
 #   for y in range(5):
@@ -28,7 +31,7 @@ players = ["John Smith", "Jim Baker", "Dusty Boot"]
 # randomLastName = random.choice(lastNames)
 
 for x in range(5) :
-    print(names.get_first_name())
+    print()
 
 # nfcNorth = list(Team.select().where(Team.div == "NFC North"))
 # nfcSouth = list(Team.select().where(Team.div == "NFC South"))

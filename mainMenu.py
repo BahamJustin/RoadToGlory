@@ -34,6 +34,7 @@ def main():
     else:
         # newPlayer()
         newLeague()
+        menu()
 
 # 
 def newGame():
@@ -46,6 +47,8 @@ def newGame():
     
     if choice == "Y" or choice == "y":
         os.remove('league.db')
+        newPlayer()
+        newLeague()
     elif choice == "N" or choice == 'n':
         return
 
@@ -93,8 +96,6 @@ def menu():
         print()
     elif choice == "4":
         newGame()
-        newPlayer()
-        newLeague()
         menu()
     elif choice == "q" or choice == "Q":
         db.close()
@@ -194,10 +195,17 @@ def viewLeague():
     elif choice == "4":
         ############### have to use Caps
         teamSearch = input("Search Team: ")
-        PlayersbyTeam(teamSearch)
-        viewLeague()
+        postionSearch = input("Select Positon (ex. QB for quaterbacks or type All): ")
+        if postionSearch == "All":
+            playersbyTeam(teamSearch)
+            viewLeague()
+        else:
+            positionbyTeam(teamSearch, postionSearch)
+            viewLeague()
+            
     else:
         menu()
 
 ##########
 main()
+

@@ -5,7 +5,8 @@ import sys
 
 teamTemplate = "{team.city} {team.name}"
 actorTemplate = "{actor.firstName} {actor.lastName}"
-playerTemplate = "{player.firstName} {player.lastName} {player.teamName_id}"
+playerTemplate = "{player.firstName} {player.lastName} {player.teamName_id} {player.position} {player.overall}"
+rosterTemplate = "{player.firstName} {player.lastName} {player.position} {player.overall}"
 
 def viewAllTeams():
     # db.connect()
@@ -60,14 +61,27 @@ def viewAllPlayers():
         print(playerTemplate.format(player=player))
 
 #  Print Player Data
-def PlayersbyTeam(teamName):
+def positionbyTeam(teamName, postion):
     # db.connect()
 
     for team in Team.select().where(Team.name == teamName):
         print(teamTemplate.format(team=team))
     print("-" * 25)
-    for player in Player.select().where(Player.teamName == teamName):
-        print(playerTemplate.format(player=player))
+    ################ Need custom order
+    for player in Player.select().order_by(Player.overall.desc()).where((Player.teamName == teamName) & (Player.position == postion)):
+        print(rosterTemplate.format(player=player))
+
+    # db.close()
+
+def playersbyTeam(teamName):
+    # db.connect()
+
+    for team in Team.select().where(Team.name == teamName):
+        print(teamTemplate.format(team=team))
+    print("-" * 25)
+    ################ Need custom order
+    for player in Player.select().order_by(Player.overall.desc()).where(Player.teamName == teamName):
+        print(rosterTemplate.format(player=player))
 
     # db.close()
 
@@ -77,4 +91,4 @@ def getCurrentSeason():
     print("-------------- " + currentSeason + "-----------------")
     db.close()
 
-# PlayersbyTeam("Saints")
+# positionbyTeam("Saints", "WR")
